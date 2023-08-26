@@ -1,18 +1,56 @@
 import { useState } from 'react';
-import PersonalInfo from './Form/PersonalInfo';
+import PersonalInfoForm from './Form/PersonalInfoForm';
 import PersonalInfoPreview from './Preview/PersonalInfoPreview';
 
 function Content() {
 	const [firstName, setFirstName] = useState(null);
+	const [lastName, setLastName] = useState(null);
+	const [jobTitle, setJobTitle] = useState(null);
+    const [address, setAddress] = useState(null);
+    const [phoneNumber, setPhoneNumber] = useState(null);
+    const [email, setEmail] = useState(null);
+    const [description, setDescription] = useState(null);
 
 	function onFirstName(event) {
 		setFirstName(event.target.value);
 	}
 
+	function onLastName(event) {
+		setLastName(event.target.value);
+	}
+
+	function onJobTitle(event) {
+		setJobTitle(event.target.value);
+	}
+
+    function onAddress(event) {
+		setAddress(event.target.value);
+	}
+
+    function onPhoneNumber(event) {
+		setPhoneNumber(event.target.value);
+	}
+
+    function onEmail(event) {
+		setEmail(event.target.value);
+	}
+
+    function onDescription(event) {
+		setDescription(event.target.value);
+	}
+
 	return (
-		<div className='content'>
+		<div className="content">
 			<div className="cv-form">
-                <PersonalInfo onFirstName={onFirstName}/>
+				<PersonalInfoForm
+					onFirstName={onFirstName}
+					onLastName={onLastName}
+					onJobTitle={onJobTitle}
+                    onAddress={onAddress}
+                    onPhoneNumber={onPhoneNumber}
+                    onEmail={onEmail}
+                    onDescription={onDescription}
+				/>
 				<h2>Work Experience</h2>
 				<form>
 					<input
@@ -61,9 +99,17 @@ function Content() {
 				</form>
 			</div>
 
-            <div className='cv-preview'>
-                <PersonalInfoPreview firstName={firstName}/>
-            </div>
+			<div className="cv-preview">
+				<PersonalInfoPreview
+					firstName={firstName}
+					lastName={lastName}
+					jobTitle={jobTitle}
+					address={address}
+					phoneNumber={phoneNumber}
+					email={email}
+					description={description}
+				/>
+			</div>
 		</div>
 	);
 }
